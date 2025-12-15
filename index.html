@@ -1,320 +1,507 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<title>宜慶地政｜重購退稅試算</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <title>宜慶地政｜重購退稅試算</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --brand:#215440;
-  --bg:#f6f7fb;
-  --card:#ffffff;
-  --text:#0f172a;
-  --muted:#475569;
-  --border:#e2e8f0;
-  --shadow:0 14px 36px rgba(2,6,23,.14);
+  <style>
+    :root{
+      --brand:#215440;
+      --bg:#f6f7fb;
+      --card:#fff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+      --shadow:0 14px 40px rgba(2,6,23,.14);
 
-  --line:#06c755;
-  --web:#111827;
-  --fb:#1877f2;
-}
+      --web:#111827;
+      --line:#06c755;
+      --fb:#1877f2;
+    }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
 
-/* ===== Banner ===== */
-.banner{
-  background:#215440;
-  color:#fff;
-  padding:48px 20px 64px;
-}
-.banner-inner{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:24px;
-  flex-wrap:wrap;
-}
-.banner img{
-  width:130px;
-  height:130px;
-  background:#fff;
-  padding:14px;
-  border-radius:22px;
-}
-.banner h1{
-  margin:0;
-  font-size:40px;
-  font-weight:900;
-}
-.banner p{
-  margin-top:12px;
-  font-size:18px;
-  line-height:1.6;
-}
+    /* ===== Banner ===== */
+    .banner{
+      background:linear-gradient(135deg, var(--brand), #1b4637);
+      color:#fff;
+      padding:48px 20px 64px;
+    }
+    .banner-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+    .banner-logo{
+      width:132px;
+      height:132px;
+      background:#fff;
+      border-radius:22px;
+      padding:14px;
+      object-fit:contain;
+      box-shadow:0 14px 34px rgba(0,0,0,.35);
+    }
+    .banner-title{
+      margin:0;
+      font-size:40px;
+      font-weight:900;
+      letter-spacing:2px;
+    }
+    .banner-sub{
+      margin-top:12px;
+      font-size:18px;
+      line-height:1.65;
+      color:rgba(255,255,255,.92);
+      font-weight:600;
+    }
 
-/* ===== Layout ===== */
-.wrap{
-  max-width:1100px;
-  margin:-40px auto 70px;
-  padding:0 16px;
-}
-.layout{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-}
-.left{
-  flex:1 1 520px;
-  min-width:320px;
-}
-.right{
-  flex:0 0 420px;
-  max-width:420px;
-}
+    /* ===== Layout ===== */
+    .wrap{
+      max-width:1100px;
+      margin:-40px auto 70px;
+      padding:0 16px;
+    }
 
-/* ===== Card ===== */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-.card + .card{margin-top:16px}
+    /* 右側預留空間，避免滑出按鈕遮到內容 */
+    .safe-right{
+      padding-right:170px;
+    }
 
-h2{
-  margin:0 0 10px;
-  font-size:20px;
-  font-weight:900;
-}
-.muted{
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.85;
-}
-.note{
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:10px;
-}
+    .layout{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .col-left{ flex:1 1 520px; min-width:320px; }
+    .col-right{ flex:1 1 420px; min-width:320px; }
 
-/* ===== Form ===== */
-label{
-  display:block;
-  margin-top:12px;
-  font-size:13px;
-  font-weight:800;
-  color:var(--muted);
-}
-input{
-  width:100%;
-  padding:12px;
-  margin-top:6px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  font-size:16px;
-}
-button{
-  width:100%;
-  margin-top:16px;
-  padding:14px;
-  border:none;
-  border-radius:14px;
-  background:var(--brand);
-  color:#fff;
-  font-size:16px;
-  font-weight:900;
-  cursor:pointer;
-}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    .card + .card{ margin-top:16px; }
 
-/* ===== Result 強化 ===== */
-.result{
-  margin-top:18px;
-  padding:18px 20px;
-  border-radius:18px;
-  background:#ecf7f2;
-  border-left:6px solid var(--brand);
-  box-shadow:0 8px 22px rgba(33,84,64,.18);
-  display:none;
-}
-.result.show{display:block}
-.result .label{
-  font-size:13px;
-  font-weight:900;
-  color:var(--brand);
-}
-.result .value{
-  margin-top:8px;
-  font-size:34px;
-  font-weight:900;
-  color:#0f5132;
-}
-.result .cta{
-  margin-top:14px;
-}
-.result .cta a{
-  display:inline-block;
-  background:#06c755;
-  color:#fff;
-  padding:12px 20px;
-  border-radius:999px;
-  font-weight:900;
-  text-decoration:none;
-}
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+      font-weight:900;
+    }
+    .note{
+      font-size:13px;
+      color:var(--muted);
+      margin:6px 0 0;
+      line-height:1.6;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.85;
+    }
 
-/* ===== Floating Buttons ===== */
-.fab{
-  position:fixed;
-  right:16px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  z-index:9999;
-}
-.fab a{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  text-decoration:none;
-  font-size:22px;
-}
-.fab-web{background:#111827}
-.fab-line{background:#06c755}
-.fab-fb{
-  background:#1877f2;
-  font-family:Arial,Helvetica,sans-serif;
-  font-weight:900;
-}
+    /* ===== details/summary（最穩定） ===== */
+    details{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;
+      overflow:hidden;
+    }
+    details + details{ margin-top:12px; }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 16px;
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .summary-right{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .detail-body{
+      padding:0 16px 16px;
+      border-top:1px solid var(--border);
+    }
 
-/* ===== RWD ===== */
-@media(max-width:900px){
-  .right{flex:1 1 100%;max-width:none}
-}
-</style>
+    label{
+      display:block;
+      margin-top:12px;
+      font-size:13px;
+      font-weight:800;
+      color:var(--muted);
+    }
+    input{
+      width:100%;
+      padding:12px;
+      margin-top:6px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      font-size:16px;
+      outline:none;
+      background:#fff;
+    }
+    input:focus{
+      border-color:rgba(33,84,64,.45);
+      box-shadow:0 0 0 4px rgba(33,84,64,.12);
+    }
+
+    .row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .row > div{ flex:1 1 220px; min-width:220px; }
+
+    button{
+      width:100%;
+      margin-top:16px;
+      padding:14px;
+      border:none;
+      border-radius:14px;
+      background:var(--brand);
+      color:#fff;
+      font-size:16px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    /* ===== ⭐ 試算結果顯眼化 + LINE CTA ===== */
+    .result{
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:18px;
+      background:#ecf7f2;
+      border-left:6px solid var(--brand);
+      box-shadow:0 8px 22px rgba(33,84,64,.18);
+      display:none;
+    }
+    .result.show{ display:block; }
+    .result .label{
+      font-size:13px;
+      font-weight:900;
+      color:var(--brand);
+      letter-spacing:1px;
+    }
+    .result .value{
+      margin-top:10px;
+      font-size:34px;
+      font-weight:900;
+      color:#0f5132;
+    }
+    .result .hint{
+      margin-top:8px;
+      font-size:13px;
+      color:#475569;
+      line-height:1.6;
+    }
+    .result .cta{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .line-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:var(--line);
+      color:#fff;
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:900;
+      text-decoration:none;
+      font-size:14px;
+      box-shadow:0 10px 22px rgba(0,0,0,.18);
+    }
+    .line-cta:hover{ filter:brightness(.97); }
+
+    /* ===== Slide-out Floating Buttons ===== */
+    .fab{
+      position:fixed;
+      right:16px;
+      top:50%;
+      transform:translateY(-50%);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      z-index:9999;
+    }
+    .fab a{
+      position:relative;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      text-decoration:none;
+      font-size:22px;
+      box-shadow:0 10px 24px rgba(0,0,0,.35);
+    }
+    .fab a .txt{
+      position:absolute;
+      right:68px;
+      background:inherit;
+      padding:10px 18px;
+      border-radius:28px;
+      white-space:nowrap;
+      font-size:14px;
+      font-weight:800;
+      opacity:0;
+      transform:translateX(12px);
+      transition:.25s ease;
+      pointer-events:none;
+    }
+    .fab a:hover .txt{
+      opacity:1;
+      transform:translateX(0);
+    }
+    .fab-web{ background:var(--web); }
+    .fab-line{ background:var(--line); }
+    .fab-fb{
+      background:var(--fb);
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:900;
+    }
+
+    footer{
+      margin-top:24px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media (max-width: 980px){
+      .safe-right{ padding-right:16px; }
+    }
+    @media (max-width: 680px){
+      .fab a .txt{ display:none; }
+      .banner-title{ font-size:32px; }
+      .banner-logo{ width:110px; height:110px; }
+      .row > div{ min-width:100%; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- Floating Buttons -->
-<div class="fab">
-  <a class="fab-web" href="https://www.lin1356.com.tw/tw" target="_blank">🌐</a>
-  <a class="fab-line" href="https://lin.ee/vkmjsW8" target="_blank">💬</a>
-  <a class="fab-fb" href="https://www.facebook.com/LL2951356/" target="_blank">f</a>
-</div>
+  <!-- 右側滑出按鈕 -->
+  <div class="fab">
+    <a class="fab-web" href="https://www.lin1356.com.tw/tw" target="_blank" rel="noopener">
+      🌐 <span class="txt">官方網站</span>
+    </a>
+    <a class="fab-line" href="https://lin.ee/vkmjsW8" target="_blank" rel="noopener">
+      💬 <span class="txt">LINE 諮詢</span>
+    </a>
+    <a class="fab-fb" href="https://www.facebook.com/LL2951356/" target="_blank" rel="noopener">
+      f <span class="txt">Facebook</span>
+    </a>
+  </div>
 
-<!-- Banner -->
-<div class="banner">
-  <div class="banner-inner">
-    <img src="logo.png" alt="宜慶地政">
-    <div>
-      <h1>宜慶地政</h1>
-      <p>掌握地政動脈<br>確保客戶權益</p>
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-inner">
+      <img src="logo.png" class="banner-logo" alt="宜慶地政 LOGO">
+      <div>
+        <h1 class="banner-title">宜慶地政</h1>
+        <div class="banner-sub">掌握地政動脈<br>確保客戶權益</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Main -->
-<div class="wrap">
-  <div class="layout">
+  <!-- Main -->
+  <div class="wrap safe-right">
+    <div class="layout">
 
-    <!-- 左：試算 -->
-    <div class="left">
-      <div class="card">
-        <h2>房地合一稅（新制）重購退稅試算</h2>
-        <div class="note">本試算結果僅供參考，實際稅額以稅捐機關核定為準。</div>
+      <!-- 左：試算 -->
+      <div class="col-left">
+        <div class="card">
+          <h2>重購退稅試算</h2>
 
-        <label>賣出總價（萬元）</label>
-        <input id="sell" type="number">
+          <!-- 新制 -->
+          <details open>
+            <summary>
+              <span>房地合一稅（新制）</span>
+              <span class="summary-right">點我展開 / 收合</span>
+            </summary>
+            <div class="detail-body">
+              <div class="note">本試算結果僅供參考，實際稅額以稅捐機關核定為準。</div>
 
-        <label>重購總價（萬元）</label>
-        <input id="buy" type="number">
+              <div class="row">
+                <div>
+                  <label>賣出總價（萬元）</label>
+                  <input id="newSell" type="number" inputmode="decimal" placeholder="例如：1200">
+                </div>
+                <div>
+                  <label>重購總價（萬元）</label>
+                  <input id="newBuy" type="number" inputmode="decimal" placeholder="例如：1000">
+                </div>
+              </div>
 
-        <label>已繳納（或應繳）稅額（萬元）</label>
-        <input id="tax" type="number">
+              <label>已繳納（或應繳）稅額（萬元）</label>
+              <input id="newTax" type="number" inputmode="decimal" placeholder="例如：30">
 
-        <button onclick="calc()">試算可退稅金額</button>
+              <button type="button" onclick="calcNew()">試算退稅金額</button>
 
-        <div id="result" class="result">
-          <div class="label">可退稅金額</div>
-          <div id="resultValue" class="value">—</div>
-          <div class="cta">
-            <a href="https://lin.ee/vkmjsW8" target="_blank">👉 一鍵 LINE 詢問專人</a>
+              <div id="newResult" class="result">
+                <div class="label">可退稅金額</div>
+                <div id="newResultValue" class="value">—</div>
+                <div class="hint">想確認實際可退稅額與條件？可直接 LINE 詢問。</div>
+                <div class="cta">
+                  <a class="line-cta" href="https://lin.ee/vkmjsW8" target="_blank" rel="noopener">💬 一鍵 LINE 詢問專人</a>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- 舊制 -->
+          <details>
+            <summary>
+              <span>土地增值稅（舊制）</span>
+              <span class="summary-right">點我展開 / 收合</span>
+            </summary>
+            <div class="detail-body">
+              <div class="note">本試算結果僅供參考，實際稅額以稅捐機關核定為準。</div>
+
+              <label>賣出土地－公告現值總額（萬元）</label>
+              <input id="oldSellValue" type="number" inputmode="decimal" placeholder="例如：800">
+
+              <label>賣出土地－已繳納土增稅（萬元）</label>
+              <input id="oldPaidTax" type="number" inputmode="decimal" placeholder="例如：25">
+
+              <label>重購土地－公告現值總額（萬元）</label>
+              <input id="oldBuyValue" type="number" inputmode="decimal" placeholder="例如：750">
+
+              <button type="button" onclick="calcOld()">試算退稅金額</button>
+
+              <div id="oldResult" class="result">
+                <div class="label">可退稅金額</div>
+                <div id="oldResultValue" class="value">—</div>
+                <div class="hint">實務仍需依公告現值與主管機關核定。建議先 LINE 詢問確認。</div>
+                <div class="cta">
+                  <a class="line-cta" href="https://lin.ee/vkmjsW8" target="_blank" rel="noopener">💬 一鍵 LINE 詢問專人</a>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- 右：說明長文（完整保留） -->
+      <div class="col-right">
+        <div class="card">
+          <h2>⚠️ 重購退稅沒注意，小心 5 年後被追稅！</h2>
+          <div class="muted">
+            成功申請重購退稅後，重購的房地在 5 年內一定要符合以下 3 大關鍵規定，否則將依《土地稅法》第 37 條規定，原本退還的稅款可能全數被追回👇
+            <br><br>
+
+            🔍 <b>重購退稅「3 大地雷」，一定要避開！</b><br><br>
+
+            ❶ <b>不能賣、不能亂送</b><br>
+            房地 不可出售，也 不可贈與配偶以外的任何人<br><br>
+
+            ❷ <b>只能自住，不能出租或做生意</b><br>
+            房地須 持續作為自用住宅，<br>
+            ❌ 不可出租<br>
+            ❌ 不可營業使用<br><br>
+
+            ❸ <b>戶籍一定要在</b><br>
+            依稅別不同，設籍對象也不同⬇️<br>
+            土地增值稅：本人、配偶或直系親屬 至少 1 人需設籍<br>
+            房地合一稅：本人、配偶或未成年子女 至少 1 人需設籍<br><br>
+
+            🏠 <b>重購退稅很複雜，交給專業才安心</b><br>
+            重購退稅牽涉 買賣時點、設籍規劃與稅務判斷，一個環節沒注意，退稅就可能飛了 💸
+            想退得安心、不被追稅，建議交由專業團隊協助規劃<br><br>
+
+            ✅ <b>重要！簽約時一定要「指定」我們</b><br>
+            在買賣簽約階段，請主動向 賣方／建設公司／仲介 表示：<br>
+            👉 「我要指定由【宜慶地政】辦理！」 才能由我們全程協助，幫您把該退的稅 退好、退滿、退安心<br><br>
+
+            📞 <b>立即諮詢，專人為您說明</b><br>
+            不想打字、覺得 Line 太慢？直接來電最快👇<br>
+            ☎️ 客服行銷部：0985-711-356<br>
+            ☎️ 總公司：06-295-1356<br><br>
+
+            <b>宜慶地政，讓您不踩雷</b>
           </div>
         </div>
       </div>
+
     </div>
 
-    <!-- 右：完整說明 -->
-    <div class="right">
-      <div class="card">
-        <h2>⚠️ 重購退稅沒注意，小心 5 年後被追稅！</h2>
-        <div class="muted">
-          成功申請重購退稅後，重購的房地在 5 年內一定要符合以下 3 大關鍵規定，否則將依《土地稅法》第 37 條規定，原本退還的稅款可能全數被追回👇
-          <br><br>
-
-          🔍 <b>重購退稅「3 大地雷」，一定要避開！</b><br><br>
-
-          ❶ <b>不能賣、不能亂送</b><br>
-          房地不可出售，也不可贈與配偶以外的任何人<br><br>
-
-          ❷ <b>只能自住，不能出租或做生意</b><br>
-          房地須持續作為自用住宅<br>
-          ❌ 不可出租<br>
-          ❌ 不可營業使用<br><br>
-
-          ❸ <b>戶籍一定要在</b><br>
-          土地增值稅：本人、配偶或直系親屬 至少 1 人需設籍<br>
-          房地合一稅：本人、配偶或未成年子女 至少 1 人需設籍<br><br>
-
-          🏠 <b>重購退稅很複雜，交給專業才安心</b><br>
-          一個環節沒注意，退稅就可能飛了 💸<br><br>
-
-          📞 <b>立即諮詢</b><br>
-          ☎️ 客服行銷部：0985-711-356<br>
-          ☎️ 總公司：06-295-1356<br><br>
-
-          <b>宜慶地政，讓您不踩雷。</b>
-        </div>
-      </div>
-    </div>
-
+    <footer>
+      © <span id="y"></span> 宜慶地政｜本試算結果僅供參考，實際稅額以稅捐機關核定為準。
+    </footer>
   </div>
-</div>
 
-<script>
-function calc(){
-  const sell = Number(document.getElementById('sell').value);
-  const buy  = Number(document.getElementById('buy').value);
-  const tax  = Number(document.getElementById('tax').value);
+  <script>
+    document.getElementById('y').innerText = new Date().getFullYear();
 
-  if(!sell || !buy || !tax){
-    alert('請填寫所有欄位');
-    return;
-  }
+    function fmtWan(num){
+      return num.toLocaleString('zh-TW', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' 萬元';
+    }
 
-  const refund = tax * Math.min(1, buy / sell);
-  document.getElementById('resultValue').innerText =
-    refund.toFixed(2) + ' 萬元';
+    // 新制：比例退稅（buy >= sell 全額）
+    function calcNew(){
+      const sell = Number(document.getElementById('newSell').value);
+      const buy  = Number(document.getElementById('newBuy').value);
+      const tax  = Number(document.getElementById('newTax').value);
 
-  document.getElementById('result').classList.add('show');
-}
-</script>
+      if(!sell || !buy || !tax){
+        alert('請填寫所有欄位');
+        return;
+      }
+
+      const ratio = Math.min(1, buy / sell);
+      const refund = tax * ratio;
+
+      document.getElementById('newResultValue').innerText = fmtWan(refund);
+      document.getElementById('newResult').classList.add('show');
+    }
+
+    // 舊制：以公告現值比例試算（簡化）
+    function calcOld(){
+      const sellValue = Number(document.getElementById('oldSellValue').value);
+      const paidTax   = Number(document.getElementById('oldPaidTax').value);
+      const buyValue  = Number(document.getElementById('oldBuyValue').value);
+
+      if(!sellValue || !paidTax || !buyValue){
+        alert('請填寫所有欄位');
+        return;
+      }
+
+      const ratio = Math.min(1, buyValue / sellValue);
+      const refund = paidTax * ratio;
+
+      document.getElementById('oldResultValue').innerText = fmtWan(refund);
+      document.getElementById('oldResult').classList.add('show');
+    }
+  </script>
 
 </body>
 </html>
