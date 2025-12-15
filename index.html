@@ -6,6 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
+      <!-- 公司資訊區 -->
+<div class="company">
+  <img src="logo.png" alt="公司LOGO" class="logo">
+  <div>
+    <h1 class="company-name">宜慶地政</h1>
+    <div class="company-links">
+      <a href="https://line.me/R/ti/p/https://lin.ee/vkmjsW8" target="_blank" class="link-box line">
+        💬 LINE 諮詢
+      </a>
+      <a href="https://www.facebook.com/https://www.facebook.com/LL2951356" target="_blank" class="link-box fb">
+        👍 Facebook 粉絲專頁
+      </a>
+    </div>
+  </div>
+</div>
+
       font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif;
       max-width: 900px;
       margin: 40px auto;
@@ -51,6 +67,48 @@
       margin-top: 10px;
     }
   </style>
+  .company {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.company-name {
+  margin: 0;
+  font-size: 24px;
+}
+
+.company-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.link-box {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.link-box.line {
+  background: #06c755;
+}
+
+.link-box.fb {
+  background: #1877f2;
+}
+
 </head>
 
 <body>
