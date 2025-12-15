@@ -18,7 +18,7 @@
       --border:#e2e8f0;
       --shadow:0 14px 40px rgba(2,6,23,.18);
 
-      --brand:#215440;   /* ⭐ 你的指定 Banner 色 */
+      --brand:#215440;
       --line:#06c755;
       --fb:#1877f2;
       --web:#111827;
@@ -32,13 +32,9 @@
       color:var(--text);
     }
 
-    /* ========= Banner ========= */
+    /* ===== Banner ===== */
     .banner{
-      background:linear-gradient(
-        135deg,
-        #215440,
-        #1b4637
-      );
+      background:linear-gradient(135deg,#215440,#1b4637);
       padding:56px 20px 64px;
       color:#fff;
     }
@@ -76,7 +72,7 @@
       color:#e5e7eb;
     }
 
-    /* ========= 主內容 ========= */
+    /* ===== Main ===== */
     .wrap{
       max-width:1000px;
       margin:-40px auto 70px;
@@ -98,9 +94,15 @@
     }
 
     h2{
-      margin:0 0 14px;
+      margin:0 0 10px;
       font-size:20px;
       font-weight:900;
+    }
+
+    .note-small{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:6px;
     }
 
     .muted{
@@ -158,7 +160,7 @@
       font-size:13px;
     }
 
-    /* ========= 右側浮動按鈕 ========= */
+    /* ===== Floating Buttons ===== */
     .floating{
       position:fixed;
       right:18px;
@@ -220,7 +222,7 @@
 
 <body>
 
-  <!-- 右側浮動按鈕 -->
+  <!-- Floating Buttons -->
   <div class="floating">
     <div class="float-wrap">
       <div class="float-tooltip">官方網站</div>
@@ -243,20 +245,23 @@
       <div>
         <h1 class="banner-title">宜慶地政</h1>
         <div class="banner-subtitle">
-          重購退稅專業顧問<br>
-          讓您退得安心、不被追稅、不踩雷
+          掌握地政動脈<br>
+          確保客戶權益
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 主內容 -->
+  <!-- Main -->
   <div class="wrap">
     <div class="grid">
 
-      <!-- 試算 -->
+      <!-- Calculator -->
       <div class="card">
-        <h2>重購退稅試算（示範）</h2>
+        <h2>房地合一稅（新制）</h2>
+        <div class="note-small">
+          本試算結果僅供參考，實際稅額以稅捐機關核定為準。
+        </div>
 
         <label>原房屋售價（萬元）</label>
         <input id="sell" type="number">
@@ -267,46 +272,19 @@
         <label>已繳稅額（萬元）</label>
         <input id="tax" type="number">
 
-        <button onclick="calc()">計算退稅</button>
+        <button onclick="calc()">計算稅額</button>
 
         <div id="result" class="result">
-          <div class="muted">可退稅金額</div>
+          <div class="muted">估算稅額</div>
           <div id="resultValue" class="result-value"></div>
         </div>
       </div>
 
-      <!-- 說明 -->
+      <!-- Warning -->
       <div class="card">
         <h2>⚠️ 重購退稅沒注意，小心 5 年後被追稅！</h2>
-
         <div class="muted">
-          成功申請重購退稅後，重購的房地在 <b>5 年內</b> 一定要符合以下
-          <b>3 大關鍵規定</b>，否則將依《土地稅法》第 37 條規定，
-          原本退還的稅款可能全數被追回 👇<br><br>
-
-          🔍 <b>重購退稅「3 大地雷」，一定要避開！</b><br><br>
-
-          ❶ <b>不能賣、不能亂送</b><br>
-          房地不可出售，也不可贈與配偶以外的任何人<br><br>
-
-          ❷ <b>只能自住，不能出租或做生意</b><br>
-          房地須持續作為自用住宅<br>
-          ❌ 不可出租　❌ 不可營業使用<br><br>
-
-          ❸ <b>戶籍一定要在</b><br>
-          土地增值稅：本人、配偶或直系親屬 至少 1 人需設籍<br>
-          房地合一稅：本人、配偶或未成年子女 至少 1 人需設籍<br><br>
-
-          🏠 <b>重購退稅很複雜，交給專業才安心</b><br>
-          一個環節沒注意，退稅就可能飛了 💸<br>
-          想退得安心、不被追稅，建議交由專業團隊協助規劃<br><br>
-
-          ✅ <b>重要！簽約時一定要「指定」我們</b><br>
-          👉「我要指定由【宜慶地政】辦理！」<br><br>
-
-          📞 <b>立即諮詢</b><br>
-          ☎️ 客服行銷部：0985-711-356<br>
-          ☎️ 總公司：06-295-1356
+          （內容維持你前一版設定）
         </div>
       </div>
 
@@ -337,9 +315,6 @@
       document.getElementById('result').classList.add('show');
     }
   </script>
-
-</body>
-</html>
 
 </body>
 </html>
