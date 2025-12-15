@@ -14,13 +14,14 @@
       --bg:#f6f7fb;
       --card:#ffffff;
       --text:#0f172a;
-      --muted:#64748b;
+      --muted:#475569;
       --border:#e2e8f0;
       --shadow:0 14px 40px rgba(2,6,23,.18);
 
-      --web:#111827;
+      --brand:#215440;   /* ⭐ 你的指定 Banner 色 */
       --line:#06c755;
       --fb:#1877f2;
+      --web:#111827;
     }
 
     *{box-sizing:border-box}
@@ -31,17 +32,14 @@
       color:var(--text);
     }
 
-    /* ======================
-       橫幅 Banner
-       ====================== */
+    /* ========= Banner ========= */
     .banner{
-      background:
-        linear-gradient(
-          135deg,
-          rgba(17,24,39,.92),
-          rgba(17,24,39,.85)
-        );
-      padding:48px 20px 56px;
+      background:linear-gradient(
+        135deg,
+        #215440,
+        #1b4637
+      );
+      padding:56px 20px 64px;
       color:#fff;
     }
 
@@ -50,28 +48,23 @@
       margin:0 auto;
       display:flex;
       align-items:center;
-      gap:28px;
+      gap:32px;
       flex-wrap:wrap;
     }
 
     .banner-logo{
-      width:140px;
-      height:140px;
+      width:150px;
+      height:150px;
       object-fit:contain;
       background:#fff;
-      border-radius:24px;
-      padding:14px;
-      box-shadow:0 12px 30px rgba(0,0,0,.35);
-    }
-
-    .banner-text{
-      flex:1;
-      min-width:260px;
+      border-radius:26px;
+      padding:16px;
+      box-shadow:0 14px 36px rgba(0,0,0,.35);
     }
 
     .banner-title{
       margin:0;
-      font-size:40px;
+      font-size:42px;
       font-weight:900;
       letter-spacing:2px;
     }
@@ -79,43 +72,41 @@
     .banner-subtitle{
       margin-top:14px;
       font-size:18px;
+      line-height:1.7;
       color:#e5e7eb;
-      line-height:1.6;
     }
 
-    /* ======================
-       主要內容
-       ====================== */
+    /* ========= 主內容 ========= */
     .wrap{
-      max-width:980px;
-      margin:-36px auto 60px;
+      max-width:1000px;
+      margin:-40px auto 70px;
       padding:0 16px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:1.2fr .8fr;
-      gap:16px;
+      gap:18px;
     }
 
     .card{
       background:var(--card);
       border:1px solid var(--border);
-      border-radius:20px;
-      padding:20px;
+      border-radius:22px;
+      padding:22px;
       box-shadow:var(--shadow);
     }
 
     h2{
-      margin:0 0 10px;
+      margin:0 0 14px;
       font-size:20px;
       font-weight:900;
     }
 
     .muted{
       color:var(--muted);
-      font-size:14px;
-      line-height:1.75;
+      font-size:15px;
+      line-height:1.8;
     }
 
     label{
@@ -141,7 +132,7 @@
       padding:14px;
       border:none;
       border-radius:14px;
-      background:#111827;
+      background:#215440;
       color:#fff;
       font-size:16px;
       font-weight:900;
@@ -158,22 +149,16 @@
     }
 
     .result.show{display:block}
-    .result-value{
-      font-size:28px;
-      font-weight:900;
-      margin-top:6px;
-    }
+    .result-value{font-size:28px;font-weight:900;margin-top:6px}
 
     footer{
-      margin-top:28px;
+      margin-top:30px;
       text-align:center;
       color:var(--muted);
       font-size:13px;
     }
 
-    /* ======================
-       右側浮動圓形按鈕
-       ====================== */
+    /* ========= 右側浮動按鈕 ========= */
     .floating{
       position:fixed;
       right:18px;
@@ -185,16 +170,13 @@
       z-index:999;
     }
 
-    .float-wrap{
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-    }
+    .float-wrap{position:relative}
 
     .float-tooltip{
       position:absolute;
       right:72px;
+      top:50%;
+      transform:translateY(-50%);
       background:#111827;
       color:#fff;
       padding:6px 12px;
@@ -202,15 +184,10 @@
       font-size:13px;
       white-space:nowrap;
       opacity:0;
-      transform:translateX(6px);
       transition:.2s;
-      pointer-events:none;
     }
 
-    .float-wrap:hover .float-tooltip{
-      opacity:1;
-      transform:translateX(0);
-    }
+    .float-wrap:hover .float-tooltip{opacity:1}
 
     .float-btn{
       width:56px;
@@ -259,15 +236,15 @@
     </div>
   </div>
 
-  <!-- 橫幅 Banner -->
+  <!-- Banner -->
   <div class="banner">
     <div class="banner-inner">
       <img src="logo.png" class="banner-logo" alt="宜慶地政 LOGO">
-      <div class="banner-text">
+      <div>
         <h1 class="banner-title">宜慶地政</h1>
         <div class="banner-subtitle">
           重購退稅專業顧問<br>
-          讓您退得安心、不踩雷、不被追稅
+          讓您退得安心、不被追稅、不踩雷
         </div>
       </div>
     </div>
@@ -303,18 +280,32 @@
         <h2>⚠️ 重購退稅沒注意，小心 5 年後被追稅！</h2>
 
         <div class="muted">
-          成功申請重購退稅後，重購的房地在 <b>5 年內</b> 必須符合 3 大規定，
-          否則依《土地稅法》第 37 條，原退稅款可能全數追回 👇<br><br>
+          成功申請重購退稅後，重購的房地在 <b>5 年內</b> 一定要符合以下
+          <b>3 大關鍵規定</b>，否則將依《土地稅法》第 37 條規定，
+          原本退還的稅款可能全數被追回 👇<br><br>
 
-          🔍 <b>3 大地雷</b><br><br>
+          🔍 <b>重購退稅「3 大地雷」，一定要避開！</b><br><br>
 
-          ❶ 不能賣、不能亂送<br>
-          ❷ 只能自住，不能出租或營業<br>
-          ❸ 戶籍一定要在（依稅別不同）<br><br>
+          ❶ <b>不能賣、不能亂送</b><br>
+          房地不可出售，也不可贈與配偶以外的任何人<br><br>
 
-          🏠 <b>重購退稅很複雜，交給專業才安心</b><br><br>
+          ❷ <b>只能自住，不能出租或做生意</b><br>
+          房地須持續作為自用住宅<br>
+          ❌ 不可出租　❌ 不可營業使用<br><br>
 
-          📞 客服行銷部：0985-711-356<br>
+          ❸ <b>戶籍一定要在</b><br>
+          土地增值稅：本人、配偶或直系親屬 至少 1 人需設籍<br>
+          房地合一稅：本人、配偶或未成年子女 至少 1 人需設籍<br><br>
+
+          🏠 <b>重購退稅很複雜，交給專業才安心</b><br>
+          一個環節沒注意，退稅就可能飛了 💸<br>
+          想退得安心、不被追稅，建議交由專業團隊協助規劃<br><br>
+
+          ✅ <b>重要！簽約時一定要「指定」我們</b><br>
+          👉「我要指定由【宜慶地政】辦理！」<br><br>
+
+          📞 <b>立即諮詢</b><br>
+          ☎️ 客服行銷部：0985-711-356<br>
           ☎️ 總公司：06-295-1356
         </div>
       </div>
@@ -322,7 +313,7 @@
     </div>
 
     <footer>
-      © <span id="y"></span> 宜慶地政｜讓您不踩雷
+      © <span id="y"></span> 宜慶地政，讓您不踩雷
     </footer>
   </div>
 
@@ -350,6 +341,5 @@
 </body>
 </html>
 
-  </script>
 </body>
 </html>
