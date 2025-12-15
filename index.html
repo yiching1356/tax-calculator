@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <title>房地產退稅試算</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.7;
+    }
+    h1 { font-size: 28px; }
+    .box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 4px;
+    }
+    button {
+      margin-top: 16px;
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 16px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .note {
+      color: #666;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>重購退稅試算（示範）</h1>
+  <p>輸入資料後按下「計算」，即可估算可退稅金額。</p>
+
+  <div class="box">
+    <label>原房屋售價（萬元）</label>
+    <input id="sell" type="number" />
+
+    <label>新購房屋價格（萬元）</label>
+    <input id="buy" type="number" />
+
+    <label>已繳稅額（萬元）</label>
+    <input id="tax" type="number" />
+
+    <button onclick="calc()">計算退稅</button>
+
+    <div class="result" id="result"></div>
+    <div class="note">
+      ※ 本結果僅為試算，實際退稅請依主管機關認定
+    </div>
+  </div>
+
+  <script>
+    function calc() {
+      const sell = Number(document.getElementById('sell').value);
+      const buy  = Number(document.getElementById('buy').value);
+      const tax  = Number(document.getElementById('tax').value);
+
+      if (!sell || !buy || !tax) {
+        alert('請填寫所有欄位');
+        return;
+      }
+
+      const ratio = Math.min(1, buy / sell);
+      const refund = tax * ratio;
+
+      document.getElementById('result').innerText =
+        '可退稅金額：約 ' + refund.toFixed(2) + ' 萬元';
+    }
+  </script>
+</body>
+</html>
