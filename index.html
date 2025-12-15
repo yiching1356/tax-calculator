@@ -5,84 +5,43 @@
   <title>宜慶地政｜房地產退稅試算</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f6f7fb;
-      --card:#fff;
-      --text:#0f172a;
-      --muted:#64748b;
-      --border:#e2e8f0;
+      --bg:#f6f7fb; --card:#fff; --text:#0f172a; --muted:#64748b; --border:#e2e8f0;
       --shadow:0 12px 30px rgba(2,6,23,.12);
-
-      --web:#111827;
-      --line:#06c755;
-      --fb:#1877f2;
+      --web:#111827; --line:#06c755; --fb:#1877f2;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
-      background:var(--bg);
+      background:radial-gradient(1200px 500px at 20% 0%, rgba(24,119,242,.10), transparent 60%),
+                radial-gradient(900px 450px at 80% 10%, rgba(6,199,85,.10), transparent 60%),
+                var(--bg);
       color:var(--text);
     }
-
-    .wrap{
-      max-width:980px;
-      margin:28px auto 60px;
-      padding:0 16px;
-    }
-
-    /* Header */
+    .wrap{max-width:980px;margin:28px auto 60px;padding:0 16px}
     .header{
-      background:#fff;
+      background:rgba(255,255,255,.85);
       border:1px solid var(--border);
       border-radius:18px;
       padding:16px;
       box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
       margin-bottom:16px;
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
+    .brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     .logo{
-      width:64px;
-      height:64px;
-      object-fit:contain;
-      border-radius:14px;
-      border:1px solid var(--border);
-      padding:6px;
-      background:#fff;
+      width:64px;height:64px;object-fit:contain;border-radius:14px;
+      border:1px solid var(--border);padding:6px;background:#fff;
     }
-
-    .company-name{
-      margin:0;
-      font-size:22px;
-      font-weight:900;
-    }
-
-    .tagline{
-      margin:4px 0 0;
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    /* Cards */
-    .grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:16px;
-    }
-
+    .company-name{margin:0;font-size:22px;font-weight:900}
+    .tagline{margin:4px 0 0;font-size:14px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -90,16 +49,126 @@
       padding:18px;
       box-shadow:var(--shadow);
     }
-
-    h2{
-      margin:0 0 8px;
-      font-size:18px;
-      font-weight:900;
-    }
-
+    h2{margin:0 0 8px;font-size:18px;font-weight:900}
     .muted{color:var(--muted);font-size:14px}
+    label{display:block;margin-top:12px;font-size:13px;font-weight:700;color:var(--muted)}
+    input{
+      width:100%;padding:12px;margin-top:6px;border:1px solid var(--border);
+      border-radius:12px;font-size:16px;outline:none;
+    }
+    input:focus{box-shadow:0 0 0 4px rgba(17,24,39,.08);border-color:rgba(17,24,39,.35)}
+    button{
+      width:100%;margin-top:16px;padding:12px;border:none;border-radius:12px;
+      background:#111827;color:#fff;font-size:16px;font-weight:900;cursor:pointer;
+    }
+    button:hover{filter:brightness(.95)}
+    .result{
+      margin-top:14px;padding:14px;border-radius:14px;background:#f8fafc;
+      border:1px solid var(--border);display:none;
+    }
+    .result.show{display:block}
+    .result-value{font-size:26px;font-weight:900;margin-top:6px}
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
 
-    label{
-      display:block;
-      margin-top:12px;
-      font-size:13px;
+    /* 右側浮動圓形按鈕 */
+    .floating{
+      position:fixed;right:18px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:12px;z-index:999;
+    }
+    .float-btn{
+      width:56px;height:56px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-size:22px;text-decoration:none;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .float-btn:hover{transform:scale(1.08);box-shadow:0 14px 30px rgba(0,0,0,.3)}
+    .float-web{background:var(--web)}
+    .float-line{background:var(--line)}
+    .float-fb{background:var(--fb)}
+
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+  </style>
+</head>
+
+<body>
+  <!-- 右側浮動按鈕 -->
+  <div class="floating">
+    <a class="float-btn float-web" href="https://www.lin1356.com.tw/tw" target="_blank" rel="noopener" title="公司官網">🌐</a>
+    <a class="float-btn float-line" href="https://lin.ee/vkmjsW8" target="_blank" rel="noopener" title="LINE 諮詢">💬</a>
+    <a class="float-btn float-fb" href="https://www.facebook.com/LL2951356/" target="_blank" rel="noopener" title="Facebook">👍</a>
+  </div>
+
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">
+        <img src="./logo.png" class="logo" alt="宜慶地政 LOGO">
+        <div>
+          <h1 class="company-name">宜慶地政</h1>
+          <p class="tagline">房地產退稅試算工具｜快速・清楚</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>重購退稅試算（示範）</h2>
+        <p class="muted">結果僅供參考，實際退稅以主管機關核定為準。</p>
+
+        <label>原房屋售價（萬元）</label>
+        <input id="sell" type="number" inputmode="decimal" placeholder="例如：1200">
+
+        <label>新購房屋價格（萬元）</label>
+        <input id="buy" type="number" inputmode="decimal" placeholder="例如：1000">
+
+        <label>已繳稅額（萬元）</label>
+        <input id="tax" type="number" inputmode="decimal" placeholder="例如：30">
+
+        <button onclick="calc()">計算退稅</button>
+
+        <div id="result" class="result">
+          <div class="muted">可退稅金額</div>
+          <div id="resultValue" class="result-value">—</div>
+          <div id="resultMeta" class="muted" style="margin-top:6px"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>使用說明</h2>
+        <p class="muted">
+          輸入售價、重購價、已繳稅額後按「計算」。<br><br>
+          需要協助請點右側 LINE / 官網 / FB。
+        </p>
+      </div>
+    </div>
+
+    <footer>© <span id="y"></span> 宜慶地政｜試算結果僅供參考</footer>
+  </div>
+
+  <script>
+    document.getElementById('y').innerText = new Date().getFullYear();
+
+    function calc(){
+      const sell = Number(document.getElementById('sell').value);
+      const buy  = Number(document.getElementById('buy').value);
+      const tax  = Number(document.getElementById('tax').value);
+
+      if(!sell || !buy || !tax){
+        alert('請填寫所有欄位');
+        return;
+      }
+
+      const ratio = Math.min(1, buy / sell);
+      const refund = tax * ratio;
+
+      document.getElementById('resultValue').innerText =
+        refund.toLocaleString('zh-TW', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' 萬元';
+
+      document.getElementById('resultMeta').innerText =
+        `退稅比例：約 ${(ratio*100).toFixed(1)}%`;
+
+      document.getElementById('result').classList.add('show');
+    }
+  </script>
+</body>
+</html>
