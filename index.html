@@ -4,48 +4,79 @@
   <meta charset="utf-8" />
   <title>房地產退稅試算</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     body {
-      <!-- 公司資訊區 -->
-<div class="company">
-  <img src="logo.png" alt="公司LOGO" class="logo">
-  <div>
-    <h1 class="company-name">宜慶地政</h1>
-    <div class="company-links">
-      <a href="https://line.me/R/ti/p/https://lin.ee/vkmjsW8" target="_blank" class="link-box line">
-        💬 LINE 諮詢
-      </a>
-      <a href="https://www.facebook.com/https://www.facebook.com/LL2951356" target="_blank" class="link-box fb">
-        👍 Facebook 粉絲專頁
-      </a>
-    </div>
-  </div>
-</div>
-
       font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif;
       max-width: 900px;
       margin: 40px auto;
       padding: 0 16px;
       line-height: 1.7;
     }
-    h1 { font-size: 28px; }
+
+    h1 { font-size: 28px; margin-bottom: 8px; }
+
+    /* 公司區塊 */
+    .company {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .company-name {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .company-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .link-box {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .link-box.web  { background: #111827; }
+    .link-box.line { background: #06c755; }
+    .link-box.fb   { background: #1877f2; }
+
+    /* 計算器 */
     .box {
       border: 1px solid #ddd;
       border-radius: 12px;
       padding: 16px;
       margin-bottom: 20px;
     }
+
     label {
       display: block;
       margin-top: 12px;
       font-size: 14px;
     }
+
     input {
       width: 100%;
       padding: 10px;
       font-size: 16px;
       margin-top: 4px;
     }
+
     button {
       margin-top: 16px;
       padding: 10px 16px;
@@ -56,62 +87,43 @@
       color: #fff;
       cursor: pointer;
     }
+
     .result {
       margin-top: 16px;
       font-size: 20px;
       font-weight: bold;
     }
+
     .note {
       color: #666;
       font-size: 14px;
       margin-top: 10px;
     }
   </style>
-  .company {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 30px;
-}
-
-.logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-}
-
-.company-name {
-  margin: 0;
-  font-size: 24px;
-}
-
-.company-links {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.link-box {
-  display: inline-block;
-  padding: 10px 14px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-}
-
-.link-box.line {
-  background: #06c755;
-}
-
-.link-box.fb {
-  background: #1877f2;
-}
-
 </head>
 
 <body>
+
+  <!-- 公司資訊 -->
+  <div class="company">
+    <img src="logo.png" alt="公司LOGO" class="logo">
+    <div>
+      <h1 class="company-name">宜慶地政</h1>
+      <div class="company-links">
+        <a href="https://www.lin1356.com.tw/tw" target="_blank" class="link-box web">
+          🌐 公司官網
+        </a>
+        <a href="https://lin.ee/vkmjsW8" target="_blank" class="link-box line">
+          💬 LINE 諮詢
+        </a>
+        <a href="https://www.facebook.com/LL2951356/" target="_blank" class="link-box fb">
+          👍 Facebook 粉絲專頁
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 試算器 -->
   <h1>重購退稅試算（示範）</h1>
   <p>輸入資料後按下「計算」，即可估算可退稅金額。</p>
 
@@ -151,5 +163,6 @@
         '可退稅金額：約 ' + refund.toFixed(2) + ' 萬元';
     }
   </script>
+
 </body>
 </html>
