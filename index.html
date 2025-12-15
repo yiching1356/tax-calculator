@@ -3,21 +3,22 @@
 <head>
 <meta charset="utf-8">
 <title>宜慶地政｜重購退稅試算</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --brand:#215440;
-  --bg:#f6f7fb;
-  --card:#fff;
-  --text:#0f172a;
-  --muted:#475569;
-  --border:#e2e8f0;
-  --shadow:0 14px 40px rgba(0,0,0,.15);
+  --bg:#f5f7f6;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --shadow:0 10px 30px rgba(0,0,0,.12);
 }
+
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:"Noto Sans TC",sans-serif;
@@ -26,62 +27,76 @@ body{
 }
 
 /* ===== Banner ===== */
-.banner{
+.header{
   background:#215440;
-  padding:50px 20px 60px;
   color:#fff;
+  padding:48px 20px 56px;
 }
-.banner-inner{
+
+.header-inner{
   max-width:1100px;
   margin:auto;
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:24px;
   flex-wrap:wrap;
 }
-.banner img{
-  width:140px;
-  height:140px;
+
+.header img{
+  width:120px;
+  height:120px;
   background:#fff;
-  padding:14px;
-  border-radius:22px;
+  padding:12px;
+  border-radius:20px;
 }
-.banner h1{
+
+.header h1{
   margin:0;
-  font-size:40px;
+  font-size:38px;
   font-weight:900;
 }
-.banner p{
+
+.header p{
   margin-top:12px;
   font-size:18px;
   line-height:1.6;
+  opacity:.9;
 }
 
 /* ===== Main ===== */
-.wrap{
+.main{
   max-width:1100px;
   margin:-40px auto 60px;
   padding:0 16px;
 }
-.grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:18px;
-}
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr}
+
+.section{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
 }
 
-.card{
+.box{
+  flex:1 1 480px;
   background:var(--card);
-  border-radius:22px;
+  border-radius:20px;
   padding:22px;
   box-shadow:var(--shadow);
 }
-h2{margin:0 0 8px;font-size:20px;font-weight:900}
-.muted{color:var(--muted);line-height:1.8}
 
-/* ===== Floating Action Buttons（獨立、不撞版）===== */
+.box h2{
+  margin:0 0 12px;
+  font-size:20px;
+  font-weight:900;
+}
+
+.box p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* ===== Floating Buttons（完全獨立） ===== */
 .fab{
   position:fixed;
   right:16px;
@@ -92,40 +107,43 @@ h2{margin:0 0 8px;font-size:20px;font-weight:900}
   gap:12px;
   z-index:9999;
 }
+
 .fab a{
   position:relative;
   width:56px;
   height:56px;
   border-radius:50%;
-  color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
+  color:#fff;
   text-decoration:none;
   font-size:22px;
   box-shadow:0 10px 24px rgba(0,0,0,.35);
   overflow:visible;
 }
+
 .fab span{
   position:absolute;
-  right:70px;
+  right:68px;
   background:inherit;
   padding:10px 18px;
-  border-radius:30px;
+  border-radius:28px;
   white-space:nowrap;
   font-size:14px;
   font-weight:700;
   opacity:0;
-  transform:translateX(10px);
-  transition:.25s;
+  transform:translateX(12px);
+  transition:.25s ease;
   pointer-events:none;
 }
+
 .fab a:hover span{
   opacity:1;
   transform:translateX(0);
 }
 
-/* 顏色 */
+/* colors */
 .fab-web{background:#111827}
 .fab-line{background:#06c755}
 .fab-fb{
@@ -133,12 +151,20 @@ h2{margin:0 0 8px;font-size:20px;font-weight:900}
   font-family:Arial,Helvetica,sans-serif;
   font-weight:900;
 }
+
+/* ===== Footer ===== */
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  margin-top:40px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- 浮動按鈕 -->
+<!-- Floating Buttons -->
 <div class="fab">
   <a class="fab-web" href="https://www.lin1356.com.tw/tw" target="_blank">
     🌐<span>官方網站</span>
@@ -151,32 +177,52 @@ h2{margin:0 0 8px;font-size:20px;font-weight:900}
   </a>
 </div>
 
-<!-- Banner -->
-<div class="banner">
-  <div class="banner-inner">
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
     <img src="logo.png" alt="宜慶地政">
     <div>
       <h1>宜慶地政</h1>
       <p>掌握地政動脈<br>確保客戶權益</p>
     </div>
   </div>
-</div>
+</header>
 
 <!-- Main -->
-<div class="wrap">
-  <div class="grid">
-    <div class="card">
+<main class="main">
+  <div class="section">
+
+    <div class="box">
       <h2>重購退稅試算</h2>
-      <p class="muted">（此處維持你原本試算內容即可）</p>
-    </div>
-    <div class="card">
-      <h2>⚠️ 重購退稅提醒</h2>
-      <p class="muted">
-        成功申請後 5 年內須符合自住、設籍等規定，否則可能被追回。
+      <p>
+        此頁提供房地合一稅（新制）與土地增值稅（舊制）之
+        重購退稅試算示意，實際稅額仍須依稅捐機關核定為準。
       </p>
     </div>
+
+    <div class="box">
+      <h2>⚠️ 重購退稅提醒</h2>
+      <p>
+        成功申請重購退稅後，於 5 年內須符合自用住宅、
+        不得出租或出售、並符合設籍規定，
+        否則原退稅款可能依法被追回。
+      </p>
+      <p>
+        📞 客服行銷部：0985-711-356<br>
+        ☎️ 總公司：06-295-1356
+      </p>
+    </div>
+
   </div>
-</div>
+
+  <footer>
+    © <span id="y"></span> 宜慶地政｜本試算結果僅供參考
+  </footer>
+</main>
+
+<script>
+document.getElementById("y").innerText = new Date().getFullYear();
+</script>
 
 </body>
 </html>
